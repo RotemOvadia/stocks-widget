@@ -14,18 +14,23 @@ export class NetworkService {
 
   constructor(private http: HttpClient) { }
 
-  public getStocks():Observable <Stock[]>{
-    return this.http.get('http://35.235.42.46/api/stock').pipe(
+  //handle network errors
+  public getStocks():Observable <Stock[]> {
+    return this.http.get('http://35.235.42.46/api/stock').pipe( //handle not correct input
       map((stocks:[]) => stocks.map(stock => new Stock(stock['Id'], stock['Name'], stock['Symbol'], stock['PrecisionDigit'])))
     );
   }
 
-  public getFeed():Observable <FeedResponse>{
+  //handle network errors
+  public getFeed():Observable <FeedResponse> {
     return this.http.get('http://35.235.42.46/api/feeds').pipe(
       map((response) => {
+        //check json structure
         const lastUpdate = response['LastUpdate'];
         const stockPrices: StockPrice[] = [];
+        
         response['Feeds'].forEach(stockPrice => {
+          //handle incorrect data
           stockPrices.push(new StockPrice(stockPrice["StockId"], stockPrice["BuyPrice"], stockPrice["SellPrice"]))
         });
         return new FeedResponse(stockPrices, lastUpdate);

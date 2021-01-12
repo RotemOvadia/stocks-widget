@@ -7,12 +7,14 @@ import { StockListComponent } from './stock-list/stock-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
+import { StockDetailsComponent } from './stock-details/stock-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    StockListComponent
+    StockListComponent,
+    StockDetailsComponent
   ],
   imports: [
     BrowserModule,

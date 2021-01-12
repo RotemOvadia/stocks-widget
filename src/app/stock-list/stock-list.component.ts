@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Stock } from '../stock.model';
 
 @Component({
@@ -9,9 +9,11 @@ import { Stock } from '../stock.model';
 export class StockListComponent implements OnInit {
 
   @Input() stocks: Stock[];
+  @Output() stockClicked: EventEmitter<Stock> = new EventEmitter<Stock>();
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { StockPrice } from './stock-price.model';
 import { Stock } from './stock.model';
 import { StoreService } from './store.service';
 
@@ -11,8 +12,15 @@ import { StoreService } from './store.service';
 export class AppComponent {
   title = 'stocks-widget-app';
   stocks$:Observable<Stock[]>;
+  selectedStock: Stock;
+  stockHistory$: Observable<StockPrice[]>;
 
   constructor(private store: StoreService){
     this.stocks$ = this.store.getStocks();
+  }
+
+  private handleStockClicked(stock: Stock){
+    this.selectedStock = stock;
+    this.stockHistory$ = this.store.getStockHistory(stock.id);
   }
 }

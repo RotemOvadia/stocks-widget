@@ -8,6 +8,7 @@ export class Stock {
     price: StockPrice;
 
     constructor(    id: number, name: string, symbol: string, precision: number ){
+        //check is valid input
         this.id = id;
         this.name = name;
         this.symbol = symbol;
