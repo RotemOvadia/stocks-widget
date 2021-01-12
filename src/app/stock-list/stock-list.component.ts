@@ -12,7 +12,6 @@ export class StockListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let test = this.stocks;
   }
 
 }

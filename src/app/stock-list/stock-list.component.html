@@ -1,5 +1,5 @@
 <mat-list role="list">
     <mat-list-item *ngFor="let stock of stocks" role="listitem">
-        <div>{{stock.name}} {{stock.symbol}}</div>
+        <div>{{stock.name}} {{stock.symbol}} {{stock.price.buyPrice}} {{stock.price.sellPrice}}</div>
     </mat-list-item>
 </mat-list>
