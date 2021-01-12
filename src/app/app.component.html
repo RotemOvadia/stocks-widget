@@ -1,2 +1,1 @@
-<app-stock-list [stocks]="stocks$ | async" (stockClicked)="handleStockClicked($event)"></app-stock-list>
-<app-stock-details *ngIf="selectedStock" [stock]="selectedStock" [stockPrices]="stockHistory$ | async"></app-stock-details>
+<router-outlet></router-outlet>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, interval, Observable } from 'rxjs';
+import { find, map } from 'rxjs/operators';
 import { FeedResponse } from './feed-response.model';
 import { NetworkService } from './network.service';
 import { StockPrice } from './stock-price.model';
@@ -44,15 +45,23 @@ export class StoreService {
         stockPrices.shift();
       }
     
-      this.stocksPriceHistory.get(price.id).next(stockPrices);
+      this.stocksPriceHistory.get(price.id).next(stockPrices.reverse());
     })
   }
 
   public getStockHistory(stockId: number):Observable<StockPrice[]> {
+    if (this.stocksPriceHistory.has(stockId) === false) { 
+      this.stocksPriceHistory.set(stockId, new BehaviorSubject<StockPrice[]>([]));
+    }
     return this.stocksPriceHistory.get(stockId);
   }
 
   public getStocks(): Observable<Stock[]>{
     return this.stocks$;
+  }
+
+  public getStock(stockId: number): Observable<Stock>{
+    return this.stocks$.pipe(
+      map( stocks => stocks.find(stock => stock.id === stockId)))
   }
 }

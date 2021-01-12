@@ -1,5 +1,5 @@
 <mat-list role="list">
-    <mat-list-item (click)="stockClicked.emit(stock)" *ngFor="let stock of stocks" role="listitem">
+    <mat-list-item (click)="stockClicked(stock)" *ngFor="let stock of stocks$ | async" role="listitem">
         <div>{{stock.name}} {{stock.symbol}} {{stock.price.buyPrice}} {{stock.price.sellPrice}}</div>
     </mat-list-item>
 </mat-list>
