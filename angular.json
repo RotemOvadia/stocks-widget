@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "stocks-widget-app"
+  "defaultProject": "stocks-widget-app",
+  "cli": {
+    "analytics": false
+  }
 }
