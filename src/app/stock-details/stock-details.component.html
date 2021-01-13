@@ -1,0 +1,13 @@
+<button (click)="backToStocksList()">Back</button>
+<div *ngIf="stock">
+    <div >Showing History for: {{stock.name}}</div>
+    <mat-list role="list">
+        <mat-list-item *ngFor="let price of stockPrices$ | async" role="listitem">
+            <div>{{price.buyPrice}} {{price.sellPrice}}</div>
+        </mat-list-item>
+    </mat-list>
+</div>
+<!-- add styling. 
+add animation for stock change
+add pagination 
+add table styling (column names)-->
